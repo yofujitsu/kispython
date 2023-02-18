@@ -3,9 +3,13 @@ import math
 
 def main(z, y):
     res = 0
-    for i in range(1, 7):
-        res += 44 * (((30*(y[5+1-math.ceil(i / 4)]**3))+(31*(z[math.ceil(i/3)]**2))+y[5+1-i])**2)
-    return "%.2e" % (res * 9)
+    n = len(z)
+    for i in range(0, n):
+        temp1 = pow(y[n - 2 + 1 - math.ceil(i // 4)], 3)
+        temp2 = pow(z[math.ceil(i // 3)], 2)
+        temp3 = y[n - 2 + 1 - i]
+        res += 44 * ((30 * temp1 + 31 * temp2 + temp3) ** 2)
+    return res * 9
 
 
 print(main([0.13, 0.75, -0.14, -0.06, 0.83, 0.79],
